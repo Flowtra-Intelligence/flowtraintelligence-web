@@ -149,6 +149,37 @@ function readSingle(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
 }
 
+function readEnv(name: string): string | undefined {
+  const value = process.env[name]?.trim();
+  return value ? value : undefined;
+}
+
+function trimTrailingSlash(value: string): string {
+  return value.replace(/\/+$/, "");
+}
+
+function buildSiteConfig() {
+  const configuredVariantValue = readEnv("FLOWTRA_SITE_VARIANT");
+  const configuredVariant: Experience | undefined =
+    configuredVariantValue === "healthcare" || configuredVariantValue === "company"
+      ? configuredVariantValue
+      : undefined;
+
+  const companyUrl =
+    readEnv("FLOWTRA_COMPANY_URL") ??
+    "https://flowtraintelligence.sreenivasa-goud.chatgpt.site";
+  const demoUrl =
+    readEnv("FLOWTRA_DEMO_URL") ?? `${trimTrailingSlash(companyUrl)}/?site=healthcare`;
+  const healthcareUrl = readEnv("FLOWTRA_HEALTHCARE_URL") ?? demoUrl;
+
+  return {
+    companyUrl,
+    demoUrl,
+    healthcareUrl,
+    configuredVariant,
+  };
+}
+
 async function detectExperience(searchParamsInput: SearchParamsInput): Promise<Experience> {
   const searchParams = await searchParamsInput;
   const forced = readSingle(searchParams.site)?.toLowerCase();
@@ -159,6 +190,11 @@ async function detectExperience(searchParamsInput: SearchParamsInput): Promise<E
 
   if (forced === "company") {
     return "company";
+  }
+
+  const siteConfig = buildSiteConfig();
+  if (siteConfig.configuredVariant) {
+    return siteConfig.configuredVariant;
   }
 
   const requestHeaders = await headers();
@@ -256,10 +292,14 @@ function SiteHeader({
 
 function FeatureCarousel({
   slides,
-  ctaHref,
+  primaryHref,
+  secondaryHref,
+  secondaryLabel,
 }: {
   slides: FeatureSlide[];
-  ctaHref: string;
+  primaryHref: string;
+  secondaryHref: string;
+  secondaryLabel: string;
 }) {
   return (
     <section className="feature-carousel" aria-label="Flagship product capabilities">
@@ -275,11 +315,11 @@ function FeatureCarousel({
               <p className="feature-outcome">{slide.outcome}</p>
 
               <div className="hero-actions">
-                <a className="button button-primary" href={ctaHref}>
+                <a className="button button-primary" href={primaryHref}>
                   Open healthcare site
                 </a>
-                <a className="button button-secondary" href="/?site=healthcare">
-                  Preview mode
+                <a className="button button-secondary" href={secondaryHref}>
+                  {secondaryLabel}
                 </a>
               </div>
             </div>
@@ -387,6 +427,8 @@ function TariffIntelligenceSection() {
 }
 
 function CompanySite() {
+  const siteConfig = buildSiteConfig();
+
   return (
     <div className="site-shell company-shell">
       <SiteHeader
@@ -397,7 +439,7 @@ function CompanySite() {
           { label: "Contact", href: "#contact" },
         ]}
         ctaLabel="Healthcare product"
-        ctaHref="https://healthcare.flowtraintelligence.com"
+        ctaHref={siteConfig.healthcareUrl}
         brandTitle="FLOWTRA INTELLIGENCE"
         brandSublabel="Applied Intelligence for Real Operations"
         experience="company"
@@ -522,11 +564,11 @@ function CompanySite() {
                 </ul>
 
                 <div className="hero-actions">
-                  <a className="button button-primary" href="https://healthcare.flowtraintelligence.com">
+                  <a className="button button-primary" href={siteConfig.healthcareUrl}>
                     Open healthcare site
                   </a>
-                  <a className="button button-secondary" href="/?site=healthcare">
-                    Preview healthcare
+                  <a className="button button-secondary" href={siteConfig.demoUrl}>
+                    Demo site
                   </a>
                 </div>
               </div>
@@ -576,6 +618,8 @@ function CompanySite() {
 }
 
 function HealthcareSite() {
+  const siteConfig = buildSiteConfig();
+
   return (
     <div className="site-shell healthcare-shell">
       <SiteHeader
@@ -588,7 +632,7 @@ function HealthcareSite() {
           { label: "Contact", href: "#contact" },
         ]}
         ctaLabel="Parent company"
-        ctaHref="https://flowtraintelligence.com"
+        ctaHref={siteConfig.companyUrl}
         brandTitle="FLOWTRA HEALTHCARE"
         brandSublabel="AI Revenue Intelligence for Hospitals"
         experience="healthcare"
@@ -714,7 +758,9 @@ function HealthcareSite() {
           <div className="container">
             <FeatureCarousel
               slides={flagshipFeatureSlides}
-              ctaHref="https://healthcare.flowtraintelligence.com"
+              primaryHref={siteConfig.healthcareUrl}
+              secondaryHref={siteConfig.demoUrl}
+              secondaryLabel="Demo site"
             />
           </div>
         </section>
