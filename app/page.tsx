@@ -725,10 +725,10 @@ function HealthcareSite() {
               <p className="eyebrow">Roadmap</p>
               <h2>Where the product is going next</h2>
             </div>
-            <p>
-              The roadmap is not just more dashboards. It is a fuller operating system for case,
-              treatment, payer, billing, and hospital-specific learning loops.
-            </p>
+              <p>
+                The roadmap is not just more dashboards. It is a fuller operating system for case,
+                treatment, payer, billing, and continuous local and cross-hospital learning loops.
+              </p>
           </div>
 
           <div className="container roadmap-grid">
