@@ -369,6 +369,12 @@ img {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
 .pillar-card {
   border-radius: 24px;
   padding: 24px;
@@ -401,6 +407,116 @@ img {
   aspect-ratio: 1.72 / 1;
   object-fit: cover;
   object-position: center top;
+}
+
+.feature-carousel {
+  display: grid;
+  gap: 20px;
+}
+
+.feature-slide {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.78fr) minmax(0, 1.22fr);
+  gap: 22px;
+  align-items: center;
+  border-radius: 30px;
+  padding: 18px;
+  border: 1px solid rgba(171, 191, 229, 0.42);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 28px 60px rgba(63, 92, 150, 0.12);
+  scroll-margin-top: 110px;
+}
+
+.feature-slide-copy {
+  padding: 10px 14px;
+}
+
+.feature-slide-copy h3 {
+  margin: 0.75rem 0 0;
+  color: #18305d;
+  font-size: clamp(1.8rem, 3vw, 2.65rem);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+
+.feature-slide-copy p {
+  color: #425881;
+  line-height: 1.72;
+  font-size: 1rem;
+}
+
+.feature-outcome {
+  margin-top: 1rem;
+  color: #18305d;
+  font-weight: 700;
+}
+
+.automation-stack {
+  display: grid;
+  gap: 20px;
+}
+
+.automation-story {
+  align-items: start;
+}
+
+.automation-detail {
+  margin-top: 1rem;
+  color: #18305d;
+  font-weight: 600;
+}
+
+.automation-visual img {
+  aspect-ratio: 1.65 / 1;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.feature-slide-visual {
+  overflow: hidden;
+  border-radius: 26px;
+  border: 1px solid rgba(174, 191, 228, 0.42);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.feature-slide-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.62 / 1;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.feature-carousel-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.feature-dot-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(166, 185, 223, 0.44);
+  background: rgba(255, 255, 255, 0.72);
+  color: #27416f;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.feature-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2f8cff, #25d2c4);
+  box-shadow: 0 0 0 4px rgba(47, 140, 255, 0.12);
+}
+
+.feature-dot-label {
+  line-height: 1.2;
 }
 
 .statement-wide {
@@ -458,15 +574,31 @@ img {
     rgba(255, 255, 255, 0.78);
 }
 
+.summary-points {
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+  color: #2f456f;
+  line-height: 1.7;
+}
+
+.summary-points li + li {
+  margin-top: 0.35rem;
+}
+
 @media (max-width: 1120px) {
   .company-hero-grid,
   .section-head,
   .flagship-card,
+  .feature-slide,
   .statement-wide {
     grid-template-columns: 1fr;
   }
 
   .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-grid {
     grid-template-columns: 1fr;
   }
 }

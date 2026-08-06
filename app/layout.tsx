@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Flowtra Intelligence",
   description:
-    "Flowtra Intelligence builds applied AI products for operationally complex environments.",
+    "Flowtra Intelligence builds applied intelligence products for real operations.",
   icons: {
     icon: "/flowtra-mark-192.png",
     shortcut: "/flowtra-mark-192.png",
