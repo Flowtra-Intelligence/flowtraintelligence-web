@@ -322,7 +322,12 @@ function FeatureCarousel({
                     {primaryLabel}
                   </a>
                 ) : null}
-                <a className="button button-secondary" href={secondaryHref}>
+                <a
+                  className="button button-secondary"
+                  href={secondaryHref}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {secondaryLabel}
                 </a>
               </div>
@@ -571,7 +576,12 @@ function CompanySite() {
                   <a className="button button-primary" href={siteConfig.healthcareUrl}>
                     Visit Flowtra Healthcare
                   </a>
-                  <a className="button button-secondary" href={siteConfig.demoUrl}>
+                  <a
+                    className="button button-secondary"
+                    href={siteConfig.demoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Explore live demo
                   </a>
                 </div>
