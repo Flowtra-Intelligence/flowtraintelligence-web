@@ -582,7 +582,7 @@ function CompanySite() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Explore live demo
+                    Try live demo
                   </a>
                 </div>
               </div>
@@ -772,7 +772,7 @@ function HealthcareSite() {
             <FeatureCarousel
               slides={flagshipFeatureSlides}
               secondaryHref={siteConfig.demoUrl}
-              secondaryLabel="Explore live demo"
+              secondaryLabel="Try live demo"
             />
           </div>
         </section>
