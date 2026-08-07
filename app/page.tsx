@@ -354,11 +354,11 @@ function FeatureCarousel({
 
 function AutomationSection() {
   return (
-    <section id="automation" className="section section-tint">
+    <section id="capabilities" className="section section-tint">
       <div className="container section-head">
         <div>
-          <p className="eyebrow">Automation</p>
-          <h2>Operational intelligence that leads to action and reduces manual work</h2>
+          <p className="eyebrow">Capabilities</p>
+          <h2>Operational intelligence and automation that move revenue work forward</h2>
         </div>
         <p>
           Flowtra is not only about seeing revenue posture. It is also about shortening response
@@ -639,9 +639,8 @@ function HealthcareSite() {
       <SiteHeader
         nav={[
           { label: "Product", href: "#product" },
-          { label: "Automation", href: "#automation" },
-          { label: "Tariff", href: "#tariff" },
-          { label: "Screens", href: "#surfaces" },
+          { label: "Capabilities", href: "#capabilities" },
+          { label: "Product tour", href: "#surfaces" },
           { label: "Roadmap", href: "#roadmap" },
           { label: "Contact", href: "#contact" },
         ]}
@@ -759,7 +758,7 @@ function HealthcareSite() {
         <section id="surfaces" className="section section-tint">
           <div className="container section-head">
             <div>
-              <p className="eyebrow">Feature walkthrough</p>
+              <p className="eyebrow">Product tour</p>
               <h2>Major operating surfaces, explained with product context</h2>
             </div>
             <p>
