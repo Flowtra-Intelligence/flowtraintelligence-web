@@ -569,7 +569,7 @@ function CompanySite() {
 
                 <div className="hero-actions">
                   <a className="button button-primary" href={siteConfig.healthcareUrl}>
-                    Explore product site
+                    Visit Flowtra Healthcare
                   </a>
                   <a className="button button-secondary" href={siteConfig.demoUrl}>
                     Explore live demo
