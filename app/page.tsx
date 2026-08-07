@@ -293,11 +293,13 @@ function SiteHeader({
 function FeatureCarousel({
   slides,
   primaryHref,
+  primaryLabel,
   secondaryHref,
   secondaryLabel,
 }: {
   slides: FeatureSlide[];
-  primaryHref: string;
+  primaryHref?: string;
+  primaryLabel?: string;
   secondaryHref: string;
   secondaryLabel: string;
 }) {
@@ -315,9 +317,11 @@ function FeatureCarousel({
               <p className="feature-outcome">{slide.outcome}</p>
 
               <div className="hero-actions">
-                <a className="button button-primary" href={primaryHref}>
-                  Open healthcare site
-                </a>
+                {primaryHref && primaryLabel ? (
+                  <a className="button button-primary" href={primaryHref}>
+                    {primaryLabel}
+                  </a>
+                ) : null}
                 <a className="button button-secondary" href={secondaryHref}>
                   {secondaryLabel}
                 </a>
@@ -438,7 +442,7 @@ function CompanySite() {
           { label: "Vision", href: "#vision" },
           { label: "Contact", href: "#contact" },
         ]}
-        ctaLabel="Healthcare product"
+        ctaLabel="Flowtra Healthcare"
         ctaHref={siteConfig.healthcareUrl}
         brandTitle="FLOWTRA INTELLIGENCE"
         brandSublabel="Applied Intelligence for Real Operations"
@@ -565,10 +569,10 @@ function CompanySite() {
 
                 <div className="hero-actions">
                   <a className="button button-primary" href={siteConfig.healthcareUrl}>
-                    Open healthcare site
+                    Explore product site
                   </a>
                   <a className="button button-secondary" href={siteConfig.demoUrl}>
-                    Demo site
+                    Explore live demo
                   </a>
                 </div>
               </div>
@@ -631,7 +635,7 @@ function HealthcareSite() {
           { label: "Roadmap", href: "#roadmap" },
           { label: "Contact", href: "#contact" },
         ]}
-        ctaLabel="Parent company"
+        ctaLabel="Flowtra Intelligence"
         ctaHref={siteConfig.companyUrl}
         brandTitle="FLOWTRA HEALTHCARE"
         brandSublabel="AI Revenue Intelligence for Hospitals"
@@ -758,9 +762,8 @@ function HealthcareSite() {
           <div className="container">
             <FeatureCarousel
               slides={flagshipFeatureSlides}
-              primaryHref={siteConfig.healthcareUrl}
               secondaryHref={siteConfig.demoUrl}
-              secondaryLabel="Demo site"
+              secondaryLabel="Explore live demo"
             />
           </div>
         </section>
