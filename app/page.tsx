@@ -290,6 +290,32 @@ function SiteHeader({
   );
 }
 
+function SiteFooter({
+  experience,
+}: {
+  experience: Experience;
+}) {
+  const isCompany = experience === "company";
+  const linkedInUrl = isCompany
+    ? "https://www.linkedin.com/company/flowtraintelligence/"
+    : "https://www.linkedin.com/showcase/flowtra-healthcare/";
+  const label = isCompany ? "Flowtra Intelligence" : "Flowtra Healthcare";
+
+  return (
+    <footer className="site-footer">
+      <div className="container footer-inner">
+        <p>{label}</p>
+        <a href={linkedInUrl} target="_blank" rel="noreferrer">
+          <span className="linkedin-mark" aria-hidden="true">
+            in
+          </span>
+          Follow {label} on LinkedIn
+        </a>
+      </div>
+    </footer>
+  );
+}
+
 function FeatureCarousel({
   slides,
   primaryHref,
@@ -627,6 +653,7 @@ function CompanySite() {
           </div>
         </section>
       </main>
+      <SiteFooter experience="company" />
     </div>
   );
 }
@@ -843,6 +870,7 @@ function HealthcareSite() {
           </div>
         </section>
       </main>
+      <SiteFooter experience="healthcare" />
     </div>
   );
 }
