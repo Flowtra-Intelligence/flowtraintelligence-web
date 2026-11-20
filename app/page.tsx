@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { headers } from "next/headers";
 
 type Experience = "company" | "healthcare";
@@ -305,12 +306,16 @@ function SiteFooter({
     <footer className="site-footer">
       <div className="container footer-inner">
         <p>{label}</p>
-        <a href={linkedInUrl} target="_blank" rel="noreferrer">
-          <span className="linkedin-mark" aria-hidden="true">
-            in
-          </span>
-          Follow {label} on LinkedIn
-        </a>
+        <nav className="legal-links" aria-label="Legal and social">
+          <Link href="/privacy">Privacy policy</Link>
+          <Link href="/terms">Terms of service</Link>
+          <a href={linkedInUrl} target="_blank" rel="noreferrer">
+            <span className="linkedin-mark" aria-hidden="true">
+              in
+            </span>
+            Follow {label} on LinkedIn
+          </a>
+        </nav>
       </div>
     </footer>
   );
